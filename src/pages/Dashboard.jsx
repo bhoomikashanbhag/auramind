@@ -1,168 +1,111 @@
 import { useState } from "react"
+
 function Dashboard() {
-  const [mood, setMood] = useState("😊")
+  const [mood, setMood] = useState("😊 Happy")
+
+  const moods = ["😊 Happy", "😌 Calm", "😔 Low", "😣 Stressed", "😴 Tired"]
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#14001f] via-black to-[#001233] text-white flex">
-      
-<div className="flex justify-between items-center mb-10">
-
-  <div>
-
-    <h1 className="text-5xl font-bold mb-2">
-      Welcome Back ✨
-    </h1>
-
-    <p className="text-gray-300">
-      Track your emotions and relax your mind.
-    </p>
-
-  </div>
-
-  <a
-    href="/"
-    className="bg-red-500 hover:bg-red-600 transition px-6 py-3 rounded-2xl"
-  >
-    Logout
-  </a>
-
-</div>
+    <div className="min-h-screen bg-gradient-to-br from-[#13001f] via-[#050008] to-[#00152e] text-white flex">
 
       {/* Sidebar */}
-      <div className="w-64 bg-white/10 backdrop-blur-lg border-r border-white/20 p-6 hidden md:flex flex-col">
+      <aside className="w-72 bg-white/10 backdrop-blur-xl border-r border-white/20 p-6 hidden md:flex flex-col">
+        <h1 className="text-3xl font-bold mb-2">AuraMind</h1>
+        <p className="text-gray-400 mb-10 text-sm">AI Wellness Companion</p>
 
-        <h1 className="text-3xl font-bold mb-10">
-          MindBloom
-        </h1>
-
-        <nav className="flex flex-col gap-6 text-lg">
-
-          <button className="text-left hover:text-purple-400 transition">
-            🏠 Dashboard
-          </button>
-
-          <button className="text-left hover:text-purple-400 transition">
-            😊 Mood Tracker
-          </button>
-
-          <button className="text-left hover:text-purple-400 transition">
-            <a
-  href="/journal"
-  className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-6 hover:scale-105 transition block"
->
-
-  <h2 className="text-2xl font-bold mb-3">
-    📖 Journal
-  </h2>
-
-  <p className="text-gray-300">
-    Write your thoughts and daily reflections.
-  </p>
-
-</a>
-          </button>
-
-          <button className="text-left hover:text-purple-400 transition">
-            <a
-  href="/chat"
-  className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-6 hover:scale-105 transition block"
->
-
-  <h2 className="text-2xl font-bold mb-3">
-    🤖 AI Chat
-  </h2>
-
-  <p className="text-gray-300">
-    Talk with your AI mood companion anytime.
-  </p>
-
-</a>
-          </button>
-
-          <button className="text-left hover:text-purple-400 transition">
-            <a
-  href="/selfcare"
-  className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-6 hover:scale-105 transition block"
->
-
-  <h2 className="text-2xl font-bold mb-3">
-    💆 Self Care
-  </h2>
-
-  <p className="text-gray-300">
-    Relaxation tips and wellness suggestions.
-  </p>
-
-</a>
-          </button>
-
+        <nav className="flex flex-col gap-4">
+          <a href="/dashboard" className="bg-purple-600/40 px-5 py-3 rounded-2xl">🏠 Dashboard</a>
+          <a href="/mood" className="hover:bg-white/10 px-5 py-3 rounded-2xl transition">🌈 Mood Tracker</a>
+          <a href="/journal" className="hover:bg-white/10 px-5 py-3 rounded-2xl transition">📖 Journal</a>
+          <a href="/chat" className="hover:bg-white/10 px-5 py-3 rounded-2xl transition">🤖 AI Talk</a>
+          <a href="/selfcare" className="hover:bg-white/10 px-5 py-3 rounded-2xl transition">🌸 Self Care</a>
         </nav>
 
-      </div>
+        <a href="/" className="mt-auto bg-red-500/80 hover:bg-red-600 text-center px-5 py-3 rounded-2xl transition">
+          Logout
+        </a>
+      </aside>
 
-      {/* Main Content */}
-      <div className="flex-1 p-8">
+      {/* Main */}
+      <main className="flex-1 p-6 md:p-10">
 
-        <h2 className="text-4xl font-bold mb-3">
-          Welcome Back ✨
-        </h2>
+        <div className="flex flex-col md:flex-row justify-between gap-6 mb-10">
+          <div>
+            <p className="text-purple-300 mb-2">Welcome back ✨</p>
+            <h2 className="text-4xl md:text-6xl font-bold mb-3">
+              Take care of your mind
+            </h2>
+            <p className="text-gray-300 text-lg">
+              Track your mood, write your thoughts, and talk with AuraMind AI.
+            </p>
+          </div>
 
-        <p className="text-gray-300 mb-8">
-          Track your emotions and relax your mind.
-        </p>
-
-        {/* Mood Box */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 mb-8">
-
-          <h3 className="text-2xl font-semibold mb-6">
-            How are you feeling today?
-          </h3>
-
-          <div className="flex gap-6 mb-12 text-6xl">
-
-  <button
-    onClick={() => setMood("😊")}
-    className="hover:scale-125 transition"
-  >
-    😊
-  </button>
-
-  <button
-    onClick={() => setMood("😌")}
-    className="hover:scale-125 transition"
-  >
-    😌
-  </button>
-
-  <button
-    onClick={() => setMood("😔")}
-    className="hover:scale-125 transition"
-  >
-    😔
-  </button>
-
-  <button
-    onClick={() => setMood("😡")}
-    className="hover:scale-125 transition"
-  >
-    😡
-  </button>
-
-  <button
-    onClick={() => setMood("😴")}
-    className="hover:scale-125 transition"
-  >
-    😴
-  </button>
-
-</div>
-<h2 className="text-3xl font-semibold mb-10">
-  Current Mood: {mood}
-</h2>
-
+          <div className="bg-white/10 border border-white/20 rounded-3xl p-5 h-fit">
+            <p className="text-gray-400 text-sm">Current Mood</p>
+            <h3 className="text-3xl font-bold mt-2">{mood}</h3>
+          </div>
         </div>
 
-      </div>
+        {/* Mood Card */}
+        <section className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-7 mb-8 shadow-2xl">
+          <h3 className="text-2xl font-bold mb-2">How are you feeling today?</h3>
+          <p className="text-gray-400 mb-6">Choose your mood to personalize your wellness journey.</p>
 
+          <div className="flex flex-wrap gap-4">
+            {moods.map((item) => (
+              <button
+                key={item}
+                onClick={() => setMood(item)}
+                className={`px-6 py-4 rounded-2xl text-xl transition hover:scale-105 ${
+                  mood === item ? "bg-purple-600" : "bg-white/10"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* Feature Cards */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <a href="/journal" className="bg-white/10 border border-white/20 rounded-3xl p-6 hover:scale-105 transition">
+            <div className="text-4xl mb-4">📖</div>
+            <h3 className="text-2xl font-bold mb-2">Journal</h3>
+            <p className="text-gray-300">Write and save your daily reflections.</p>
+          </a>
+
+          <a href="/chat" className="bg-white/10 border border-white/20 rounded-3xl p-6 hover:scale-105 transition">
+            <div className="text-4xl mb-4">🤖</div>
+            <h3 className="text-2xl font-bold mb-2">AI Talk</h3>
+            <p className="text-gray-300">Talk with your AI wellness companion.</p>
+          </a>
+
+          <a href="/selfcare" className="bg-white/10 border border-white/20 rounded-3xl p-6 hover:scale-105 transition">
+            <div className="text-4xl mb-4">🌸</div>
+            <h3 className="text-2xl font-bold mb-2">Self Care</h3>
+            <p className="text-gray-300">Get calming tips and wellness suggestions.</p>
+          </a>
+        </section>
+
+        {/* Bottom Stats */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-purple-600/20 border border-purple-400/30 rounded-3xl p-6">
+            <p className="text-gray-300">Wellness Score</p>
+            <h3 className="text-4xl font-bold mt-2">82%</h3>
+          </div>
+
+          <div className="bg-blue-600/20 border border-blue-400/30 rounded-3xl p-6">
+            <p className="text-gray-300">Journal Entries</p>
+            <h3 className="text-4xl font-bold mt-2">12</h3>
+          </div>
+
+          <div className="bg-pink-600/20 border border-pink-400/30 rounded-3xl p-6">
+            <p className="text-gray-300">Mindful Minutes</p>
+            <h3 className="text-4xl font-bold mt-2">45</h3>
+          </div>
+        </section>
+
+      </main>
     </div>
   )
 }
