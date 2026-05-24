@@ -44,13 +44,14 @@ export default function Chat() {
       )
 
     } catch (error) {
+  console.log(error)
 
-      console.log(error)
-
-      alert("AI Error ❌")
-
-    }
-
+  alert(
+    error.response?.data?.error?.message ||
+    error.message ||
+    "AI Error"
+  )
+}
     setLoading(false)
 
   }
